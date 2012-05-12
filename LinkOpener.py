@@ -30,6 +30,23 @@ def fixLink(link):
     return link
 
 
+def statusInfo(opened):
+    if len(opened) > 0:
+        message = "Opening link"
+        if len(opened) > 1:
+            message += "s"
+
+        message += ": "
+
+        for link in opened:
+            message += " [" + link + "]"
+
+    else:
+        message = "No link found"
+
+    return "LinkOpener > " + message
+
+
 class OpenUrlCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         selection = self.view.sel()
@@ -50,3 +67,5 @@ class OpenUrlCommand(sublime_plugin.TextCommand):
 
             if settings.get('first_link_only'):
                 break
+
+        sublime.status_message(statusInfo(opened))
