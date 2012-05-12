@@ -1,0 +1,5 @@
+[
+   { "caption": "-" },
+   { "caption": "Open URL", "command": "open_url" },
+   { "caption": "-" }
+]
