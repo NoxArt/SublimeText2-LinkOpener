@@ -9,4 +9,5 @@ Commands for adding key bindings:
 * *open_url*
 * *select_next_url*
 * *select_all_urls*
+
 (no arguments needed)
