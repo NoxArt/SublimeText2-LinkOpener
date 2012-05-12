@@ -5,7 +5,10 @@ import re
 
 junk = r"(?:\s|\;|\)|\]|\[|\{|\}|,|\"|'|:|\<|$|\.\s)"
 head = r"(?:(?:(?:http|https|ftp)://(?:\S*?\.\S+?))|(?:\bwww\.\S+?))"
-findUrl = re.compile("(" + head + junk + ")", re.I)
+
+regexFindUrl = "(" + head + ")" + junk
+findUrl = re.compile(regexFindUrl, re.I)
+findUrlExact = re.compile("^" + regexFindUrl + "$", re.I)
 findJunk = re.compile(junk + "$", re.I)
 
 settings = sublime.load_settings('linkopener.sublime-settings')
@@ -17,6 +20,10 @@ def isLink(text):
 
 def findLinks(text):
     return re.findall(findUrl, text)
+
+
+def isSelectionLink(text):
+    return findUrlExact.match(text) is not None
 
 
 def cleanLink(link):
@@ -69,3 +76,65 @@ class OpenUrlCommand(sublime_plugin.TextCommand):
                 break
 
         sublime.status_message(statusInfo(opened))
+
+
+class SelectNextUrlCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        selection = self.view.sel()
+        finalSelection = None
+        index = -1
+
+        for select in selection:
+            contents = self.view.substr(select)
+
+            if select.begin() == select.end():
+                select = sublime.Region(select.begin(), self.view.size())
+            elif len(contents) > 0 and isSelectionLink(contents):
+                select = sublime.Region(select.end(), self.view.size())
+
+            contents = self.view.substr(select)
+            link = findLinks(contents)
+            index += 1
+
+            if len(link) > 0:
+                finalSelection = select
+                break
+
+        if len(selection) is 0 or len(link) is 0:
+            select = sublime.Region(0, self.view.size())
+            contents = self.view.substr(select)
+            link = findLinks(contents)
+
+            if len(link) > 0:
+                finalSelection = select
+
+        if len(link) > 0:
+            if type(link[0]) is tuple:
+                link[0] = link[0][0]
+
+            result = self.view.find(link[0], finalSelection.begin(), sublime.LITERAL)
+
+            region = sublime.Region(result.begin(), result.end())
+
+            selection.clear()
+            selection.add(region)
+
+
+class SelectAllUrlsCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        selection = self.view.sel()
+
+        select = sublime.Region(0, self.view.size())
+        contents = self.view.substr(select)
+        link = findLinks(contents)
+
+        if len(link) > 0:
+            link = map(re.escape, link)
+            links = "|".join(link)
+
+            result = self.view.find_all(links)
+            selection.clear()
+
+            for reg in result:
+                region = sublime.Region(reg.begin(), reg.end())
+                selection.add(region)
