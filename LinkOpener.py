@@ -1,3 +1,4 @@
+import sublime
 import sublime_plugin
 import webbrowser
 import re
@@ -6,6 +7,8 @@ junk = r"(?:\s|\;|\)|\]|\[|\{|\}|,|\"|'|:|\<|$|\.\s)"
 head = r"(?:(?:(?:http|https|ftp)://(?:\S*?\.\S+?))|(?:\bwww\.\S+?))"
 findUrl = re.compile("(" + head + junk + ")", re.I)
 findJunk = re.compile(junk + "$", re.I)
+
+settings = sublime.load_settings('linkopener.sublime-settings')
 
 
 def isLink(text):
@@ -41,6 +44,9 @@ class OpenUrlCommand(sublime_plugin.TextCommand):
             link = cleanLink(link)
             link = fixLink(link)
 
-            if link not in opened:
-                webbrowser.open(link, 1, True)
+            if link is not None and link not in opened:
+                webbrowser.open(link, 1, settings.get('raise_window'))
                 opened.append(link)
+
+            if settings.get('first_link_only'):
+                break

@@ -1,0 +1,6 @@
+{
+	// false = open only first link found | true = open all
+	"first_link_only": false,
+	// if true then raises and focused the browser's window upon openning
+	"raise_window": true
+}
