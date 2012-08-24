@@ -16,4 +16,6 @@ Released under MIT licence.
 
 Feel free to add issues, ideas, pull requests...
 
+Thanks [danio](https://github.com/danio) for a fix #1.
+
 **@NoxArt**

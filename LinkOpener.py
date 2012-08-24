@@ -27,7 +27,7 @@ import webbrowser
 import re
 
 junk = r"(?:\s|\;|\)|\]|\[|\{|\}|,|\"|'|:|\<|$|\.\s)"
-head = r"(?:(?:(?:http|https|ftp)://(?:\S*?\.\S+?))|(?:\bwww\.\S+?))"
+head = r"(?:(?:(?:http|https|ftp)://(?:\S+?))|(?:\bwww\.\S+?))"
 
 regexFindUrl = "(" + head + ")" + junk
 findUrl = re.compile(regexFindUrl, re.I)
