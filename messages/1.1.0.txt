@@ -1,0 +1,14 @@
+LinkOpener
+=============================
+by @NoxArt
+https://github.com/NoxArt/SublimeText2-LinkOpener
+
+
+Upgrade 1.1.0
+----------------
+
+Added web search:
+- supports multiple selection
+- by default uses Google
+- edit your User settings to set a different engine or adjust Google's URL (use %s in the place of searched term)
+(more info about Sublime's settings: http://www.sublimetext.com/docs/2/settings.html)

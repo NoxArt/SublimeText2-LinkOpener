@@ -5,6 +5,11 @@ Tiny [Sublime Text 2](http://www.sublimetext.com/) plugin for opening links in s
 
 Simply **select any portion** of text and *LinkOpener* will **open all links** inside with protocols *http*, *https*, *ftp* or starting with *www.* in your default browser. Supports multiple selection.
 
+**Added web search**
+- supports multiple selection
+- by default uses Google
+- edit your User settings to set a different engine or adjust Google's URL (use %s in the place of searched term)
+
 Commands for adding key bindings:
 * *open_url*
 * *select_next_url*

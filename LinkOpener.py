@@ -25,6 +25,7 @@ import sublime
 import sublime_plugin
 import webbrowser
 import re
+import urllib2
 
 junk = r"(?:\s|\;|\)|\]|\[|\{|\}|,|\"|'|:|\<|$|\.\s)"
 head = r"(?:(?:(?:http|https|ftp)://(?:\S+?))|(?:\bwww\.\S+?))"
@@ -161,3 +162,23 @@ class SelectAllUrlsCommand(sublime_plugin.TextCommand):
             for reg in result:
                 region = sublime.Region(reg.begin(), reg.end())
                 selection.add(region)
+
+class SearchTermCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        selection = self.view.sel()
+        select = sublime.Region(0, self.view.size())
+
+        selection = self.view.sel()
+        terms = []
+
+        for select in selection:
+            contents = self.view.substr(select)
+            if contents not in terms:
+                terms.append(urllib2.quote(contents.encode("utf8")))
+
+
+        for term in terms:
+            link = settings.get('search_url').replace('%s', term)
+
+            webbrowser.open(link, 1, True)
+

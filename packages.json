@@ -1,0 +1,20 @@
+{
+	"schema_version": "1.2",
+	"packages": [
+		{
+			"name": "LinkOpener",
+			"description": "Tiny plugin for opening links and Googling",
+			"author": "NoxArt",
+			"homepage": "https://github.com/NoxArt/SublimeText2-LinkOpener",
+			"last_modified": "2012-04-02 20:10:00",
+			"platforms": {
+				"*": [
+					{
+						"version": "1.1.0",
+						"url": "https://nodeload.github.com/NoxArt/SublimeText2-LinkOpener/zip/v1.1.0"
+					}
+				]
+			}
+		}
+	]
+}
