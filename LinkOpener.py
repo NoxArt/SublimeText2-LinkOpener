@@ -182,7 +182,7 @@ class SearchTermCommand(sublime_plugin.TextCommand):
             contents = self.view.substr(select)
             if contents not in terms:
               if ST3:
-                terms.append(urllib.parse(contents))
+                terms.append(urllib.parse.quote(contents))
               else:
                 terms.append(urllib2.quote(contents.encode("utf8")))
 
