@@ -25,7 +25,14 @@ import sublime
 import sublime_plugin
 import webbrowser
 import re
-import urllib2
+
+import sys
+ST3 = sys.version_info >= (3, 3)
+
+if ST3:
+  import urllib.parse
+else:
+  import urllib2
 
 junk = r"(?:\s|\;|\)|\]|\[|\{|\}|,|\"|'|:|\<|$|\.\s)"
 head = r"(?:(?:(?:http|https|ftp)://(?:\S+?))|(?:\bwww\.\S+?))"
@@ -174,6 +181,9 @@ class SearchTermCommand(sublime_plugin.TextCommand):
         for select in selection:
             contents = self.view.substr(select)
             if contents not in terms:
+              if ST3:
+                terms.append(urllib.parse(contents))
+              else:
                 terms.append(urllib2.quote(contents.encode("utf8")))
 
 
