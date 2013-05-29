@@ -1,0 +1,17 @@
+LinkOpener
+=============================
+by @NoxArt
+https://github.com/NoxArt/SublimeText2-LinkOpener
+
+
+Upgrade 1.2.0
+----------------
+
+Plugin has been updated to be compatible with Sublime Text 3
+
+Author: michfield
+https://github.com/michfield
+
+Fixes: cvladan
+https://github.com/cvladan
+
