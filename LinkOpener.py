@@ -85,7 +85,7 @@ def statusInfo(opened):
     return "LinkOpener > " + message
 
 
-class OpenUrlCommand(sublime_plugin.TextCommand):
+class LinkOpenerOpenUrlCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         selection = self.view.sel()
         links = []
@@ -109,7 +109,7 @@ class OpenUrlCommand(sublime_plugin.TextCommand):
         sublime.status_message(statusInfo(opened))
 
 
-class SelectNextUrlCommand(sublime_plugin.TextCommand):
+class LinkOpenerSelectNextUrlCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         selection = self.view.sel()
         finalSelection = None
@@ -151,7 +151,7 @@ class SelectNextUrlCommand(sublime_plugin.TextCommand):
             selection.add(region)
 
 
-class SelectAllUrlsCommand(sublime_plugin.TextCommand):
+class LinkOpenerSelectAllUrlsCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         selection = self.view.sel()
 
@@ -170,7 +170,7 @@ class SelectAllUrlsCommand(sublime_plugin.TextCommand):
                 region = sublime.Region(reg.begin(), reg.end())
                 selection.add(region)
 
-class SearchTermCommand(sublime_plugin.TextCommand):
+class LinkOpenerSearchTermCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         selection = self.view.sel()
         select = sublime.Region(0, self.view.size())

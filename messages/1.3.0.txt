@@ -1,0 +1,13 @@
+LinkOpener
+=============================
+by @NoxArt
+https://github.com/NoxArt/SublimeText2-LinkOpener
+
+
+Update 1.3.0
+----------------
+
+Fixed conflict with native commands, added "LinkOpener" prefix.
+
+PLEASE UPDATE YOUR KEY BINDINGS (if you use for LinkOpener).
+

@@ -1,8 +1,8 @@
 [
    { "caption": "-" },
-   { "caption": "Search on web", "command": "search_term" },
-   { "caption": "Open URL", "command": "open_url" },
-   { "caption": "Select next URL", "command": "select_next_url" },
-   { "caption": "Select all URLs", "command": "select_all_urls" },
+   { "caption": "Search on web", "command": "link_opener_search_term" },
+   { "caption": "Open URL", "command": "link_opener_open_url" },
+   { "caption": "Select next URL", "command": "link_opener_select_next_url" },
+   { "caption": "Select all URLs", "command": "link_opener_select_all_urls" },
    { "caption": "-" }
 ]
