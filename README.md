@@ -11,9 +11,10 @@ Simply **select any portion** of text and *LinkOpener* will **open all links** i
 - edit your User settings to set a different engine or adjust Google's URL (use %s in the place of searched term)
 
 Commands for adding key bindings:
-* *open_url*
-* *select_next_url*
-* *select_all_urls*
+* *link_opener_search_term*
+* *link_opener_open_url*
+* *link_opener_select_next_url*
+* *link_opener_select_all_urls*
 
 (no arguments needed)
 
